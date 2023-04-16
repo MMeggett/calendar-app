@@ -10,6 +10,12 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+  $('.saveBtn').click(function () {
+    var hour = $(this).parent().attribute('id');
+    var calendarText = $(this).siblings('.description').value();
+    localStorage.setItem(hour, calendarText);
+  })
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -20,7 +26,7 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  
+
   // Shows current time
   function showCurrentDate() {
     $('#currentDay').text(now.format('MM/DD/YYYY')
@@ -28,4 +34,5 @@ $(function () {
   }
 
   showCurrentDate();
+  getTasksFromStorage();
 });
